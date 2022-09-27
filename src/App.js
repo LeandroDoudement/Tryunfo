@@ -82,6 +82,7 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       doesATrunfoCardExist,
+      deck,
     } = this.state;
 
     const lim = 210;
@@ -127,6 +128,19 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {deck.map((card) => (
+          <Card
+            key={ card.cardName }
+            cardName={ card.cardName }
+            cardDescription={ card.cardDescription }
+            cardAttr1={ card.cardAttr1 }
+            cardAttr2={ card.cardAttr2 }
+            cardAttr3={ card.cardAttr3 }
+            cardImage={ card.cardImage }
+            cardRare={ card.cardRare }
+            cardTrunfo={ card.cardTrunfo }
+          />
+        ))}
       </>
     );
   }
