@@ -26,6 +26,30 @@ class App extends React.Component {
     });
   };
 
+  isSaveButtonDisabled = () => {
+    const lim = 210;
+    const attrLim = 90;
+    const attrNegativeLim = 0;
+    const { cardName,
+      cardDescription,
+      cardImage,
+      cardRare,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3 } = this.state;
+    return !cardName
+    || !cardDescription
+    || !cardImage
+    || !cardRare
+    || parseInt(cardAttr1, 10) + parseInt(cardAttr2, 10) + parseInt(cardAttr3, 10) > lim
+    || parseInt(cardAttr1, 10) > attrLim
+    || parseInt(cardAttr2, 10) > attrLim
+    || parseInt(cardAttr3, 10) > attrLim
+    || parseInt(cardAttr2, 10) < attrNegativeLim
+    || parseInt(cardAttr3, 10) < attrNegativeLim
+    || parseInt(cardAttr1, 10) < attrNegativeLim;
+  };
+
   render() {
     const { cardName,
       cardDescription,
@@ -51,7 +75,7 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           hasTrunfo=""
-          isSaveButtonDisabled
+          isSaveButtonDisabled={ this.isSaveButtonDisabled }
           onInputChange={ this.handleChange }
           onSaveButtonClick=""
 

@@ -15,6 +15,7 @@ class Form extends React.Component {
       isSaveButtonDisabled,
       onInputChange,
       onSaveButtonClick } = this.props;
+
     return (
       <form action="">
         <label htmlFor="cartName">
@@ -44,6 +45,8 @@ class Form extends React.Component {
             data-testid="attr1-input"
             value={ cardAttr1 }
             onChange={ onInputChange }
+            min="0"
+            max="90"
           />
         </label>
         <label htmlFor="attr2">
@@ -54,6 +57,8 @@ class Form extends React.Component {
             data-testid="attr2-input"
             value={ cardAttr2 }
             onChange={ onInputChange }
+            min="0"
+            max="90"
           />
         </label>
         <label htmlFor="attr3">
@@ -64,6 +69,8 @@ class Form extends React.Component {
             data-testid="attr3-input"
             value={ cardAttr3 }
             onChange={ onInputChange }
+            min="0"
+            max="90"
           />
         </label>
         <label htmlFor="cartImage">
@@ -102,7 +109,7 @@ class Form extends React.Component {
         <button
           type="submit"
           data-testid="save-button"
-          disabled={ isSaveButtonDisabled }
+          disabled={ isSaveButtonDisabled() }
           onClick={ onSaveButtonClick }
         >
           Salvar
