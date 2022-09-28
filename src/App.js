@@ -16,6 +16,7 @@ class App extends React.Component {
       cardTrunfo: false,
       deck: [],
       doesATrunfoCardExist: false,
+      filteredName: '',
     };
   }
 
@@ -83,6 +84,13 @@ class App extends React.Component {
     });
   };
 
+  getInputValue = (event) => {
+    const inputValue = event.target.value;
+    this.setState({
+      filteredName: inputValue,
+    });
+  };
+
   render() {
     const { cardName,
       cardDescription,
@@ -94,6 +102,7 @@ class App extends React.Component {
       cardTrunfo,
       doesATrunfoCardExist,
       deck,
+      filteredName,
     } = this.state;
     const lim = 210;
     const attrLim = 90;
@@ -108,6 +117,10 @@ class App extends React.Component {
      || parseInt(cardAttr2, 10) < 0
      || parseInt(cardAttr3, 10) < 0
      || parseInt(cardAttr1, 10) < 0;
+
+    const filteredDeck = deck.filter((card) => card.cardName.toLowerCase()
+      .includes(filteredName.toLowerCase()));
+
     return (
       <>
         <div>
@@ -138,7 +151,10 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        {deck.map((card, index) => (
+        <label htmlFor="nameFilter">
+          <input type="text" data-testid="name-filter" onChange={ this.getInputValue } />
+        </label>
+        {filteredDeck.map((card, index) => (
           <div key={ card.cardName }>
             <Card
               cardName={ card.cardName }
