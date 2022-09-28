@@ -64,12 +64,23 @@ class App extends React.Component {
       cardTrunfo: false,
     });
 
-    const check = deck.filter((element) => element.cardTrunfo === true);
+    const check = deck.some((element) => element.cardTrunfo === true);
     if (check) {
       this.setState({
         doesATrunfoCardExist: true,
       });
     }
+  };
+
+  removeCard = (index) => {
+    const { deck } = this.state;
+    const newDeck = [...deck];
+    newDeck.splice(index, 1);
+    const check = newDeck.some((element) => element.cardTrunfo === true);
+    this.setState({
+      deck: newDeck,
+      doesATrunfoCardExist: check,
+    });
   };
 
   render() {
@@ -84,7 +95,6 @@ class App extends React.Component {
       doesATrunfoCardExist,
       deck,
     } = this.state;
-
     const lim = 210;
     const attrLim = 90;
     const isSaveButtonDisabled = !cardName
@@ -128,18 +138,27 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
-        {deck.map((card) => (
-          <Card
-            key={ card.cardName }
-            cardName={ card.cardName }
-            cardDescription={ card.cardDescription }
-            cardAttr1={ card.cardAttr1 }
-            cardAttr2={ card.cardAttr2 }
-            cardAttr3={ card.cardAttr3 }
-            cardImage={ card.cardImage }
-            cardRare={ card.cardRare }
-            cardTrunfo={ card.cardTrunfo }
-          />
+        {deck.map((card, index) => (
+          <div key={ card.cardName }>
+            <Card
+              cardName={ card.cardName }
+              cardDescription={ card.cardDescription }
+              cardAttr1={ card.cardAttr1 }
+              cardAttr2={ card.cardAttr2 }
+              cardAttr3={ card.cardAttr3 }
+              cardImage={ card.cardImage }
+              cardRare={ card.cardRare }
+              cardTrunfo={ card.cardTrunfo }
+            />
+            <button
+              type="button"
+              data-testid="delete-button"
+              onClick={ () => this.removeCard(index) }
+            >
+              Excluir
+
+            </button>
+          </div>
         ))}
       </>
     );
