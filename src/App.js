@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -17,6 +18,9 @@ class App extends React.Component {
       deck: [],
       doesATrunfoCardExist: false,
       filteredName: '',
+      filteredRarity: 'todas',
+      filteredTrunfo: false,
+
     };
   }
 
@@ -84,11 +88,23 @@ class App extends React.Component {
     });
   };
 
-  getInputValue = (event) => {
-    const inputValue = event.target.value;
-    this.setState({
-      filteredName: inputValue,
-    });
+  filterDeck = () => {
+    const { deck, filteredName, filteredRarity, filteredTrunfo } = this.state;
+    let filteredDeck = deck;
+    if (filteredName !== '') {
+      filteredDeck = deck.filter((card) => card.cardName.includes(filteredName));
+    }
+    if (filteredTrunfo !== false) {
+      filteredDeck = deck.filter((card) => card.cardTrunfo === true);
+    }
+    if (filteredRarity !== 'todas') {
+      filteredDeck = deck.filter((card) => card.cardRare === filteredRarity);
+    } if (filteredRarity !== 'todas' && filteredName !== '') {
+      filteredDeck = deck
+        .filter((card) => card.cardRare === filteredRarity && card.cardName
+          .includes(filteredName));
+    }
+    return filteredDeck;
   };
 
   render() {
@@ -101,8 +117,9 @@ class App extends React.Component {
       cardRare,
       cardTrunfo,
       doesATrunfoCardExist,
-      deck,
       filteredName,
+      filteredRarity,
+      filteredTrunfo,
     } = this.state;
     const lim = 210;
     const attrLim = 90;
@@ -118,43 +135,82 @@ class App extends React.Component {
      || parseInt(cardAttr3, 10) < 0
      || parseInt(cardAttr1, 10) < 0;
 
-    const filteredDeck = deck.filter((card) => card.cardName.toLowerCase()
-      .includes(filteredName.toLowerCase()));
-
     return (
-      <>
+      <body>
         <div>
-          <h1>Tryunfo</h1>
+          <img src="images/logo_tryunfo.png" alt="Tryunfo" className="logo" />
         </div>
-        <Form
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo=""
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onInputChange={ this.handleChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-          doesATrunfoCardExist={ doesATrunfoCardExist }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardImage={ cardImage }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
+        <div className="box-branco">
+          <div className="box-nova-carta">
+            <Form
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+              hasTrunfo=""
+              isSaveButtonDisabled={ isSaveButtonDisabled }
+              onInputChange={ this.handleChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+              doesATrunfoCardExist={ doesATrunfoCardExist }
+            />
+          </div>
+          <div className="box-preview">
+            <h3 className="title">Pré-visualização</h3>
+            <Card
+              cardName={ cardName }
+              cardDescription={ cardDescription }
+              cardAttr1={ cardAttr1 }
+              cardAttr2={ cardAttr2 }
+              cardAttr3={ cardAttr3 }
+              cardImage={ cardImage }
+              cardRare={ cardRare }
+              cardTrunfo={ cardTrunfo }
+            />
+          </div>
+        </div>
+
         <label htmlFor="nameFilter">
-          <input type="text" data-testid="name-filter" onChange={ this.getInputValue } />
+          Filtrar deck por nome:
+          <input
+            type="text"
+            data-testid="name-filter"
+            onChange={ this.handleChange }
+            name="filteredName"
+            value={ filteredName }
+            disabled={ filteredTrunfo }
+          />
         </label>
-        {filteredDeck.map((card, index) => (
+        <label htmlFor="rarityFilter">
+          Filtrar deck por raridade:
+          <select
+            name="filteredRarity"
+            data-testid="rare-filter"
+            value={ filteredRarity }
+            onChange={ this.handleChange }
+            disabled={ filteredTrunfo }
+
+          >
+            <option value="todas">Todas</option>
+            <option value="normal">Normal</option>
+            <option value="raro">Raro</option>
+            <option value="muito raro">Muito Raro</option>
+          </select>
+        </label>
+        <label htmlFor="trunfoFilter">
+          Super Trunfo
+          <input
+            type="checkbox"
+            data-testid="trunfo-filter"
+            onChange={ this.handleChange }
+            name="filteredTrunfo"
+            value={ filteredTrunfo }
+          />
+        </label>
+        {this.filterDeck().map((card, index) => (
           <div key={ card.cardName }>
             <Card
               cardName={ card.cardName }
@@ -176,7 +232,7 @@ class App extends React.Component {
             </button>
           </div>
         ))}
-      </>
+      </body>
     );
   }
 }
