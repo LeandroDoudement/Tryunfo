@@ -1,7 +1,7 @@
 body {
   background-color: #052727;
+  font-family: Epilogue;
   margin: 5%;
-  font-family: 'Epilogue';
 }
 
 header {
@@ -10,12 +10,12 @@ header {
 
 .box-branco {
   background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 19px rgba(0, 0, 0, 0.8);
   display: flex;
   justify-content: space-around;
-  box-shadow: 0px 4px 19px rgba(0, 0, 0, 0.8);
-  border-radius: 20px;
+  margin: 0 auto;
   width: 75%;
-  margin: 0px auto;
 }
 
 .box-cardpreview {
@@ -29,22 +29,22 @@ header {
 }
 
 .all-cards-title {
-  text-align: center;
   color: white;
-  text-transform: uppercase;
-  font-style: italic;
   font-size: 20px;
+  font-style: italic;
   line-height: 29px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .filters-box {
   background: #036b52;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  color: white;
   border-radius: 5px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
   display: flex;
+  margin: 0 auto;
   width: 75%;
-  margin: 0px auto;
 }
 
 .filters-box > * {
@@ -52,11 +52,11 @@ header {
 }
 
 .filter-element {
-  margin: 0px 5px;
+  background: #036b52;
   border: white 1px solid;
   border-radius: 5px;
-  background: #036b52;
   color: white;
+  margin: 0 5px;
 }
 
 ::placeholder {

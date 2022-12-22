@@ -1,28 +1,28 @@
 .new-card-form {
   display: flex;
   flex-direction: column;
-  font-family: 'Verdana';
+  font-family: Verdana;
+  font-size: 12px;
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
   line-height: 100%;
-  margin: 15px 0px;
+  margin: 15px 0;
 }
 
 .form-title {
+  color: #2fc18c;
+  font-size: 14px;
   font-style: italic;
   font-weight: 800;
-  font-size: 14px;
   line-height: 20px;
   text-transform: uppercase;
-  color: #2fc18c;
 }
 
 .vertical-form-element {
   display: flex;
   flex-direction: column;
-  margin: 10px 0px;
   gap: 5px;
+  margin: 10px 0;
 }
 
 .horizontal-form-element {
@@ -31,17 +31,17 @@
 }
 
 .points-element {
-  margin: 10px 0px;
+  margin: 10px 0;
 }
 
 .save-button {
   background: #2fc18c;
   border-radius: 2px;
   color: white;
-  font-family: 'Verdana';
+  font-family: Verdana;
+  font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
   line-height: 150%;
 }
 

@@ -1,16 +1,16 @@
 .label {
   background: #f0f2f5;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
   color: #3d495c;
   padding: 3px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
 }
 
 .count {
-  font-weight: bold;
   background: #023031;
-  color: white;
-  border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  color: white;
+  font-weight: bold;
   padding: 3px 7px;
 }
