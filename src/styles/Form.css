@@ -1,0 +1,52 @@
+.new-card-form {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  margin: 15px 0px;
+}
+
+.form-title {
+  font-style: italic;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: #2fc18c;
+}
+
+.vertical-form-element {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0px;
+  gap: 5px;
+}
+
+.horizontal-form-element {
+  display: flex;
+  gap: 10px;
+}
+
+.points-element {
+  margin: 10px 0px;
+}
+
+.save-button {
+  background: #2fc18c;
+  border-radius: 2px;
+  color: white;
+  font-family: 'Verdana';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.save-button:disabled {
+  background-color: gray;
+  color: white;
+  cursor: not-allowed;
+}

@@ -1,0 +1,78 @@
+.outer-card {
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 9px -3px 10px 1px rgba(230, 223, 230, 1);
+}
+.card {
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+  background: #036b52;
+}
+.inner-card {
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+}
+.card-header {
+  background: #023031;
+  padding: 3px;
+  color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-header-name {
+  font-size: 18px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.card-header-rarity {
+  font-size: 10px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.card-content {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-attributes {
+  padding: 10px;
+  gap: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: white;
+  height: 50%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: relative;
+}
+
+.super-tryunfo-img {
+  width: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.card-image {
+  max-height: 50%;
+}
+
+.card-description {
+  font-size: 10px;
+  color: white;
+  background: #036b52;
+  padding: 5px;
+  word-break: break-word;
+  max-width: 190px;
+}

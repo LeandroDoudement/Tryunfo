@@ -1,6 +1,8 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import TryunfoLogo from './images/TryunfoLogo.png';
+import './App.css';
 
 class App extends React.Component {
   constructor() {
@@ -12,7 +14,7 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: 'Normal',
       cardTrunfo: false,
       deck: [],
       doesATrunfoCardExist: false,
@@ -64,7 +66,7 @@ class App extends React.Component {
       cardAttr2: '0',
       cardAttr3: '0',
       cardImage: '',
-      cardRare: 'normal',
+      cardRare: 'Normal',
       cardTrunfo: false,
     });
 
@@ -136,9 +138,9 @@ class App extends React.Component {
 
     return (
       <body>
-        <div>
-          <img src="images/logo_tryunfo.png" alt="Tryunfo" className="logo" />
-        </div>
+        <header>
+          <img src={ TryunfoLogo } alt="Tryunfo" width="300px" />
+        </header>
         <div className="box-branco">
           <div className="box-nova-carta">
             <Form
@@ -157,8 +159,8 @@ class App extends React.Component {
               doesATrunfoCardExist={ doesATrunfoCardExist }
             />
           </div>
-          <div className="box-preview">
-            <h3 className="title">Pré-visualização</h3>
+          <div className="box-cardpreview">
+            <h3 className="form-title">Pré-visualização</h3>
             <Card
               cardName={ cardName }
               cardDescription={ cardDescription }
@@ -171,44 +173,45 @@ class App extends React.Component {
             />
           </div>
         </div>
-
-        <label htmlFor="nameFilter">
-          Filtrar deck por nome:
-          <input
-            type="text"
-            data-testid="name-filter"
-            onChange={ this.handleChange }
-            name="filteredName"
-            value={ filteredName }
-            disabled={ filteredTrunfo }
-          />
-        </label>
-        <label htmlFor="rarityFilter">
-          Filtrar deck por raridade:
-          <select
-            name="filteredRarity"
-            data-testid="rare-filter"
-            value={ filteredRarity }
-            onChange={ this.handleChange }
-            disabled={ filteredTrunfo }
-
-          >
-            <option value="todas">Todas</option>
-            <option value="normal">Normal</option>
-            <option value="raro">Raro</option>
-            <option value="muito raro">Muito Raro</option>
-          </select>
-        </label>
-        <label htmlFor="trunfoFilter">
-          Super Trunfo
-          <input
-            type="checkbox"
-            data-testid="trunfo-filter"
-            onChange={ this.handleChange }
-            name="filteredTrunfo"
-            value={ filteredTrunfo }
-          />
-        </label>
+        <h3 className="all-cards-title">Todas as cartas</h3>
+        <div className="filters-box">
+          <label htmlFor="filteredName">
+            Filtros de busca:
+            <input
+              type="text"
+              data-testid="name-filter"
+              onChange={ this.handleChange }
+              name="filteredName"
+              value={ filteredName }
+              disabled={ filteredTrunfo }
+              placeholder="Nome da carta"
+              className="filter-element"
+            />
+            <select
+              name="filteredRarity"
+              data-testid="rare-filter"
+              value={ filteredRarity }
+              onChange={ this.handleChange }
+              disabled={ filteredTrunfo }
+              className="filter-element"
+            >
+              <option value="todas">Todas</option>
+              <option value="normal">Normal</option>
+              <option value="raro">Raro</option>
+              <option value="muito raro">Muito Raro</option>
+            </select>
+          </label>
+          <label htmlFor="trunfoFilter">
+            Super Trunfo
+            <input
+              type="checkbox"
+              data-testid="trunfo-filter"
+              onChange={ this.handleChange }
+              name="filteredTrunfo"
+              value={ filteredTrunfo }
+            />
+          </label>
+        </div>
         {this.filterDeck().map((card, index) => (
           <div key={ card.cardName }>
             <Card
