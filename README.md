@@ -1,13 +1,24 @@
-# :construction: README customizado em construção ! :construction:
-<!-- Olá, Tryber!
-Esse é apenas um arquivo inicial para o README do seu projeto no qual você pode customizar e reutilizar todas as vezes que for executar o trybe-publisher.
+> Tryunfo é um jogo no estilo Super Trunfo! Ao utilizar essa aplicação uma pessoa usuária deverá ser capaz de:
 
-Para deixá-lo com a sua cara, basta alterar o seguinte arquivo da sua máquina: ~/.student-repo-publisher/custom/_NEW_README.md
+Criar um baralho com o tema livre;
 
-É essencial que você preencha esse documento por conta própria, ok?
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-:warning: IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
--->
+Adicionar e remover uma carta do baralho;
+
+Visualizar todas as cartas que foram adicionadas ao baralho;
+
+Este projeto foi feito em React com o proposito de aprender as seguintes habilidades:
+
+- Ler o estado de um componente e usá-lo para alterar o que exibimos no browser
+
+- Inicializar um componente, dando a ele um estado pré-definido
+
+- Atualizar o estado de um componente
+
+- Capturar eventos utilizando a sintaxe do React
+
+- Criar formulários utilizando sintaxe JSX com as tags: input, textarea, select, form, checkbox
+
+- Transmitir informações de componentes filhos para componentes pais via callbacks
+
+
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/108767928/209180851-69d7bfb4-dfa6-49b1-bc7d-c9597a8d092a.gif)
